@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8" />
+<title>Ethereum Virtual Machine</title>
+
+
+  
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  href="https://glazari.github.io/index.xml"
+  title="Guilherme Lázari"
+/>
+
+<link rel="stylesheet" href="https://glazari.github.io/fontawesome/css/all.min.css" />
+
+<link
+  id="dark-mode-theme"
+  rel="stylesheet"
+  href="https://glazari.github.io/css/dark.css"
+/>
+
+<script>
+  var darkTheme = document.getElementById('dark-mode-theme')
+  var storedTheme = localStorage.getItem('dark-mode-storage')
+  if (storedTheme === 'dark') {
+    darkTheme.disabled = false
+  } else if (storedTheme === 'light') {
+    darkTheme.disabled = true
+  }
+</script>
+
+<script src="https://glazari.github.io/js/bundle.js"></script>
+<script src="https://glazari.github.io/js/instantpage.min.js" type="module" defer></script>
+<meta name="generator" content="Hugo 0.101.0" />
+  </head>
+  <body>
+    
+  
+
+
+
+
+  <header>
+    <nav class="navbar">
+  <div class="nav">
+    
+
+    <ul class="nav-links">
+      
+        
+          <li>
+            <a href="/" id="Home"
+              ><em class="fas fa-home fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/about/" id="About"
+              ><em class="fas fa-user fa-lg"></em
+            ></a>
+          </li>
+          
+      
+        
+          <li>
+            <a href="/tags" id="Tags"
+              ><em class="fas fa-tag fa-lg"></em
+            ></a>
+          </li>
+          
+      
+    </ul>
+  </div>
+</nav>
+
+    <div class="intro-header">
+      <div class="container">
+        <div class="post-heading">
+          
+            <h1>
+              Ethereum Virtual Machine
+            </h1>
+          
+          
+            <span class="meta-post">
+  <em class="fa fa-calendar-alt"></em
+  >&nbsp;Apr 21, 2021
+  
+</span>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+    
+  <div class="container" role="main">
+    <article class="article" class="blog-post">
+      
+  
+
+
+<div class="pager"}>
+  <img
+    src="/images/ethereum-virtual-machine/eth-diamond-purple.png"
+    alt="Sample image"
+    decoding="async"
+  />
+</div>
+
+<p>Blockchains and crypto currencies are an exciting topic, and they are trending
+right now because the price of crypto currencies are shooting up. You&rsquo;ve probably
+heard of Bitcoin, the largest crypto currency by market cap, and probably also
+heard of Ethereum, the second largest crypto currency by market. What might come
+as a surprise for you (it did for me) is that Ethereum dos not sell itself as
+a crypto-currency. It sells itself as a globally shared virtual machine.</p>
+<ul>
+<li>What exactly does this mean?</li>
+<li>Where does the blockchain fit in to this?</li>
+<li>Where does the crypto currency fit in</li>
+<li>What&rsquo;s the use? Why not just use a giant JVM?</li>
+</ul>
+<p>I&rsquo;m no expert and there are plenty of good <a href="#reffs">references out there</a> for
+you to learn these topics in detail. In this post I will just try to briefly
+answer these 4 questions.</p>
+<h1 id="what-is-a-virtual-machine">What is a Virtual machine</h1>
+<p>Lets start by answering what is a virtual machine. A virtual machine is a
+program that will abstract away the details of the machine its being run on.
+When we write in a higher level language, like python o C for example, a simple
+adding statement will be unwrapped into &ldquo;machine-code&rdquo;. Ex.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>c <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> b
+</span></span></code></pre></div><p>The above statement might be unwrapped to something like:</p>
+<pre tabindex="0"><code class="language-assembly" data-lang="assembly">MOV R1, A   ; Move value from memory address A to register R1
+MOV R2, B   ; Move value from memory address B to register R2
+ADD R1, R2  ; Add value in register R1 with register R2 and store in register R1 
+MOV C, R1   ; Move value from register R1 to memory address C
+</code></pre><p>So even simple language operations get translated into quite a few processor
+instructions. The annoying thing is that each processor can be slightly different,
+with a different number of registers or some special instructions that make some
+operations faster. There are also some of these instructions that delegate work
+to the underlining operating system So in order to have your program run on lots
+of different processors and operating systems, you will need to recompile your
+program for every combination of processor-OS that you want.</p>
+<p>A Virtual Machine (VM) can help solve this problem by defining a single set of
+of instructions that the virtual machine will understand. Instead of compiling
+your program to the OS/processor instruction set you will compile your program
+to the VM instruction set. Then any computer, phone or toster that has this VM
+will be able to run your program. Of course the virtual machine itself still
+needs to be compiled for each architecture, but its still better than having to
+recompile every program.</p>
+
+
+
+<div class="pager"}>
+  <img
+    src="/images/ethereum-virtual-machine/virtual-machine.png"
+    alt="Virtual Machine"
+    decoding="async"
+  />
+</div>
+
+<p>This is what Java does with the <a href="https://docs.oracle.com/javase/specs/jvms/se6/html/Introduction.doc.html">Java Virtual Machine (JVM)</a>
+and its one of the reasons Java became so popular. Its also one of the reasons
+android uses Java.</p>
+<p>So the <a href="https://ethervm.io/">Etheruem Virtual Machine defines a set of basic instructions</a>
+it will understand. This answers our first question about what
+is a virtual machine, but we still haven&rsquo;t talked about blockchain.</p>
+<h1 id="where-is-the-blockchain-in-all-of-this">Where is the Blockchain in all of this?</h1>
+<p>You might have heard that a blockchain constitutes of blocks of transactions chained
+together by hashes of their parents. I will not explain the mechanics of this,
+if you are not familiar <a href="https://www.youtube.com/watch?v=SSo_EIwHSd4&amp;ab_channel=SimplyExplained">this is video is a good starting point.</a>
+What I want to cover is the idea that a blockchain is actually a database. To
+understand the connection, lets take a moment to look at a simple key-value store.</p>
+
+
+
+<div class="pager"}>
+  <img
+    src="/images/ethereum-virtual-machine/key-value-store.png"
+    alt="Virtual Machine"
+    decoding="async"
+  />
+</div>
+
+<p>Key value stores accept 2 kinds of operations, GET and SET. GET is read only but
+the SET operation modifies the state of the database. Now that we have a database
+lets think about how we can make a copy of it. The most straight forward way is
+just to create a snapshot of all records and send it.</p>
+
+
+
+<div class="pager"}>
+  <img
+    src="/images/ethereum-virtual-machine/key-value-store-snapshot-copy.png"
+    alt="Virtual Machine"
+    decoding="async"
+  />
+</div>
+
+<p>But what happens when a new SET operation comes in. The copies are now out of
+sync. If we keep sending full copies every time there is an update it can become
+very expensive and slow. An alternative is sending a stream of all SET operations
+so that the copy database can replay them in order.</p>
+
+
+
+<div class="pager"}>
+  <img
+    src="/images/ethereum-virtual-machine/key-value-store-log-copy.png"
+    alt="Virtual Machine"
+    decoding="async"
+  />
+</div>
+
+<p>This idea that a database is a snapshot of a series of operations is very common
+and is even used internally in some databases to be able to recover from crashes
+mid operation. <a href="https://en.wikipedia.org/wiki/Replication_(computing)">Replication Wiki</a></p>
+<p>In the case of blockchains, the blockchain itself is a log of all database
+transactions. By replaying all transactions in order you get the current state
+of the database. In the case of Bitcoin this database is a key-value store of
+account balances. In the case of Ethereum this database includes the account
+balances but also includes all the programs (smart contracts) available and some program &ldquo;logs&rdquo;
+and some general information storage, essentially it is the full state of the
+Ethereum Virtual Machine.</p>
+
+
+
+<div class="pager"}>
+  <img
+    src="/images/ethereum-virtual-machine/blockchain.png"
+    alt="Virtual Machine"
+    decoding="async"
+  />
+</div>
+
+<h1 id="wasnt-ethereum-a-crypto-currency">Wasn&rsquo;t Ethereum a Crypto currency?</h1>
+<p>So we&rsquo;ve covered how ethereum is a virtual machine and how blockchains are a
+form of database replication. But what about the crypto-currency, wasn&rsquo;t that
+the main part? The currency does play an important role in tying up the loose
+ends. Lets look how.</p>
+<p>We have our virtual machine, and we have made it replicated world wide and
+freely available online. How can we prevent malicious attackers from filling
+up our database with cat pictures?</p>
+
+
+
+<div class="pager"}>
+  <img
+    src="/images/ethereum-virtual-machine/cat.png"
+    alt="Virtual Machine"
+    decoding="async"
+  />
+</div>
+
+<p>To solve this we add fees to our virtual machine. Just like in a normal machine
+computation takes energy and time, in our virtual machine each computation takes
+energy and time from every node on the network. With Fees for each transaction
+the attackers will only put in the amount of cat pictures that fit in there budget.
+:) problem averted! But of course we cant use normal credit cards or third-party
+payment system because that would defeat the decentralized nature of blockchains.
+So the payment will be done in a native currency ETH.  Every transaction has a
+transaction fee called gas.</p>
+<p>The currency in the network has 2 sides to it. On one side, it disincentivizes
+attacks to the network by making it less economically viable. On the other it
+offers an incentive for those who help make the network more secure executing
+the proof of work. (There is also <a href="https://ethereum.org/en/developers/docs/consensus-mechanisms/pos/">proof-of-stake</a>
+which ethereum will switch to in the future.)</p>
+<h1 id="why-not-just-use-java-virtual-machine">Why not just use java virtual machine?</h1>
+<p>So whats the point of all of this? Why create a new type of virtual machine?
+why put it on a blockchain? And why should we take a made up currency seriously?
+Plus all this validation and replication makes computations on EVM very slow,
+we are used to subsecond latency from backend services, EVM operates in the range
+of <a href="https://etherscan.io/">~10s</a>. I can&rsquo;t say I know the answer to any of these questions,
+unfortunately. But I am excited about this tecnology and curious about what it
+could bring.</p>
+<p>The main selling point of blockchain is that it is a shared state. Its not just
+shared in the sense that we can all send a document to each other, its shared in
+the sense that we can all be sure we are looking at the same data. We can be
+sure that the copy we got wasn&rsquo;t tampered with. What applications will need
+decentralized consensus at its core, is the billion dollar question.</p>
+<p>There are few applications that are already taking advantage of this: Decentralized
+Financial Services (<a href="https://www.youtube.com/watch?v=k9HYC0EJU6E&amp;t=427s&amp;ab_channel=Finematics">DeFi</a>)
+and Ownership Certificates backed by the block chain, mostly called Non-fungible tokens
+(<a href="https://www.youtube.com/watch?v=Xdkkux6OxfM&amp;ab_channel=Finematics">NFTs</a>).
+I encourage you to read about these applications. But I also think that there
+could be more exciting applications that we haven&rsquo;t thought of yet.</p>
+
+
+
+<div class="pager"}>
+  <img
+    src="/images/ethereum-virtual-machine/nfts-defi.png"
+    alt="Virtual Machine"
+    decoding="async"
+  />
+</div>
+
+<p>No one would have guessed 30 years ago how central the internet could be today.
+And yet today we only remember it when it is slow or not working. The internet is
+not exciting, its just infrastructure, its what we build on top of it that we have
+come to rely on. I see the Ethereum Virtual Machine as a great piece of infrastructure
+and I think a successful future for Ethereum is one where people use apps that
+rely on it but only remember about the blockchain when it is slow or congested.</p>
+<h1 id="reffs">References</h1>
+<ul>
+<li><a href="https://ethereum.org/en/developers/docs/evm/">Ethereum.org on the EVM</a></li>
+<li><a href="https://ethereum.org/en/developers/docs/intro-to-ethereum/">Ethereum.org Intro</a></li>
+<li><a href="https://www.youtube.com/watch?v=Xdkkux6OxfM&amp;list=RDCMUCh1ob28ceGdqohUnR7vBACA&amp;start_radio=1&amp;t=214&amp;ab_channel=Finematics">Finematics Youtube Channel</a></li>
+</ul>
+
+
+
+
+      
+        <div class="blog-tags">
+          
+            <a href="https://glazari.github.io//tags/ethereum/">ethereum</a
+            >&nbsp;
+          
+            <a href="https://glazari.github.io//tags/crypto/">crypto</a
+            >&nbsp;
+          
+            <a href="https://glazari.github.io//tags/blockchain/">blockchain</a
+            >&nbsp;
+          
+        </div>
+      
+    </article>
+    
+    
+      
+
+    
+  </div>
+
+    <footer>
+  
+  <div>
+    
+      <a href="https://github.com/glazari" name="github"
+        ><em class="fab fa-github"></em
+      ></a>
+    
+      <a href="https://www.linkedin.com/in/guilherme-l%c3%a1zari-costa-e-silva-7a074b59/" name="linkedin"
+        ><em class="fab fa-linkedin"></em
+      ></a>
+    
+  </div>
+
+
+  <div class="container">
+    <p class="credits copyright">
+      <a href="https://glazari.github.io/about">Guilherme de Lázari</a>
+      &nbsp;&copy;
+      2021
+      
+        &nbsp;/&nbsp;
+        <a href="https://glazari.github.io/">Guilherme Lázari</a>
+      
+      &nbsp;&ndash;&nbsp;
+      <em class="fas fa-moon" id="dark-mode-toggle"></em>
+    </p>
+
+    <p class="credits theme-by">
+      Powered By <a href="https://gohugo.io">Hugo</a>&nbsp;
+      Theme
+      <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>
+    </p>
+  </div>
+</footer>
+
+  </body>
+</html>
