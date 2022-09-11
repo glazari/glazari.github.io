@@ -1,7 +1,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
 		<title>Categories on Guilherme Lázari</title>
-		<link>https://glazari.github.io/categories/</link>
+		<link>https://blog.guilhermelazari.dev/categories/</link>
 		<description>Recent content in Categories </description>
 		<generator>Hugo -- gohugo.io</generator>
 		
@@ -13,17 +13,17 @@
 		
 		<item>
 			<title>Ethereum Virtual Machine</title>
-			<link>https://glazari.github.io/2021/04/21/ethereum-virtual-machine/</link>
+			<link>https://blog.guilhermelazari.dev/2021/04/21/ethereum-virtual-machine/</link>
 			<pubDate>Wed, 21 Apr 2021 22:55:50 -0300</pubDate>
-			<guid>https://glazari.github.io/2021/04/21/ethereum-virtual-machine/</guid>
+			<guid>https://blog.guilhermelazari.dev/2021/04/21/ethereum-virtual-machine/</guid>
 			<description>Blockchains and crypto currencies are an exciting topic, and they are trending right now because the price of crypto currencies are shooting up. You&amp;rsquo;ve probably heard of Bitcoin, the largest crypto currency by market cap, and probably also heard of Ethereum, the second largest crypto currency by market. What might come as a surprise for you (it did for me) is that Ethereum dos not sell itself as a crypto-currency.</description>
 		</item>
       	
 		<item>
 			<title>Python Table Tests</title>
-			<link>https://glazari.github.io/2021/03/23/python-table-tests/</link>
+			<link>https://blog.guilhermelazari.dev/2021/03/23/python-table-tests/</link>
 			<pubDate>Tue, 23 Mar 2021 01:29:05 -0300</pubDate>
-			<guid>https://glazari.github.io/2021/03/23/python-table-tests/</guid>
+			<guid>https://blog.guilhermelazari.dev/2021/03/23/python-table-tests/</guid>
 			<description>In the go programing language there is a testing pattern called table tests. I want to quickly go over what is this pattern, why I think it&amp;rsquo;s great and how we can use it in python.
 What are Table tests In go a simple test would look like this:
 func TestAdd(t *testing.T) { got := add(5, 6) if got != 11 { t.Errorf(&amp;#34;Expected 11, Got %v&amp;#34;, got) } } A table test of the same kind will look like this:</description>
@@ -31,9 +31,9 @@ func TestAdd(t *testing.T) { got := add(5, 6) if got != 11 { t.Errorf(&amp;#34;E
       	
 		<item>
 			<title>Testing Pyspark</title>
-			<link>https://glazari.github.io/2020/11/29/testing-pyspark/</link>
+			<link>https://blog.guilhermelazari.dev/2020/11/29/testing-pyspark/</link>
 			<pubDate>Sun, 29 Nov 2020 21:09:57 -0300</pubDate>
-			<guid>https://glazari.github.io/2020/11/29/testing-pyspark/</guid>
+			<guid>https://blog.guilhermelazari.dev/2020/11/29/testing-pyspark/</guid>
 			<description>We all know unit testing our code is a good idea. But there is some kind of inertia that keeps most of us from doing it. Part of this inertia, I believe is not knowing how to start. So I am sharing how I write tests for pyspark in the hopes that it will give you the push you need.
 Testing in python First things first, if you&amp;rsquo;ve never written a test for a normal python function we need to get that out of the way first.</description>
 		</item>
