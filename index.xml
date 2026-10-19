@@ -1,15 +1,15 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>Guilherme Lázari on Guilherme Lázari</title>
+		<title>Guilherme Lázari</title>
 		<link>https://blog.guilhermelazari.dev/</link>
-		<description>Recent content in Guilherme Lázari </description>
+		<description>Recent content </description>
 		<generator>Hugo -- gohugo.io</generator>
 		
   		<language>en-us</language>
 		
-		<managingEditor>Page(&#34;Guilherme Lázari&#34;) (Guilherme de Lázari)</managingEditor>
+		
     	
-  		<lastBuildDate>Wed, 21 Apr 2021 22:55:50 -0300</lastBuildDate>
+  		<lastBuildDate>Sat, 01 Nov 2025 18:00:00 -0300</lastBuildDate>
 		
 		<atom:link href="/" rel="self" type="application/rss+xml" />
 		

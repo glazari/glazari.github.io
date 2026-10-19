@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>crypto on Guilherme Lázari</title>
+		<title>Crypto on Guilherme Lázari</title>
 		<link>https://blog.guilhermelazari.dev/tags/crypto/</link>
-		<description>Recent content in crypto </description>
+		<description>Recent content in Crypto </description>
 		<generator>Hugo -- gohugo.io</generator>
 		
   		<language>en-us</language>
 		
-		<managingEditor>Page(/tags/crypto) (Guilherme de Lázari)</managingEditor>
+		
     	
   		<lastBuildDate>Wed, 21 Apr 2021 22:55:50 -0300</lastBuildDate>
 		

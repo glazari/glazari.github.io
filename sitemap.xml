@@ -4,6 +4,12 @@
   <url>
     <loc>https://blog.guilhermelazari.dev/about/</loc>
   </url><url>
+    <loc>https://blog.guilhermelazari.dev/</loc>
+    <lastmod>2025-11-01T18:00:00-03:00</lastmod>
+  </url><url>
+    <loc>https://blog.guilhermelazari.dev/post/</loc>
+    <lastmod>2025-11-01T18:00:00-03:00</lastmod>
+  </url><url>
     <loc>https://blog.guilhermelazari.dev/tags/blockchain/</loc>
     <lastmod>2021-04-21T22:55:50-03:00</lastmod>
   </url><url>
@@ -14,12 +20,6 @@
     <lastmod>2021-04-21T22:55:50-03:00</lastmod>
   </url><url>
     <loc>https://blog.guilhermelazari.dev/2021/04/21/ethereum-virtual-machine/</loc>
-    <lastmod>2021-04-21T22:55:50-03:00</lastmod>
-  </url><url>
-    <loc>https://blog.guilhermelazari.dev/</loc>
-    <lastmod>2021-04-21T22:55:50-03:00</lastmod>
-  </url><url>
-    <loc>https://blog.guilhermelazari.dev/post/</loc>
     <lastmod>2021-04-21T22:55:50-03:00</lastmod>
   </url><url>
     <loc>https://blog.guilhermelazari.dev/tags/</loc>

@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>spark on Guilherme Lázari</title>
+		<title>Spark on Guilherme Lázari</title>
 		<link>https://blog.guilhermelazari.dev/tags/spark/</link>
-		<description>Recent content in spark </description>
+		<description>Recent content in Spark </description>
 		<generator>Hugo -- gohugo.io</generator>
 		
   		<language>en-us</language>
 		
-		<managingEditor>Page(/tags/spark) (Guilherme de Lázari)</managingEditor>
+		
     	
   		<lastBuildDate>Sun, 29 Nov 2020 21:09:57 -0300</lastBuildDate>
 		

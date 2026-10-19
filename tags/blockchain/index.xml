@@ -1,13 +1,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 	<channel>
-		<title>blockchain on Guilherme Lázari</title>
+		<title>Blockchain on Guilherme Lázari</title>
 		<link>https://blog.guilhermelazari.dev/tags/blockchain/</link>
-		<description>Recent content in blockchain </description>
+		<description>Recent content in Blockchain </description>
 		<generator>Hugo -- gohugo.io</generator>
 		
   		<language>en-us</language>
 		
-		<managingEditor>Page(/tags/blockchain) (Guilherme de Lázari)</managingEditor>
+		
     	
   		<lastBuildDate>Wed, 21 Apr 2021 22:55:50 -0300</lastBuildDate>
 		
