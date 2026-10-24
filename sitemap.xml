@@ -2,8 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://blog.guilhermelazari.dev/about/</loc>
-  </url><url>
     <loc>https://blog.guilhermelazari.dev/</loc>
     <lastmod>2025-11-01T18:00:00-03:00</lastmod>
   </url><url>
@@ -39,9 +37,5 @@
   </url><url>
     <loc>https://blog.guilhermelazari.dev/2020/11/29/testing-pyspark/</loc>
     <lastmod>2020-11-29T21:09:57-03:00</lastmod>
-  </url><url>
-    <loc>https://blog.guilhermelazari.dev/categories/</loc>
-  </url><url>
-    <loc>https://blog.guilhermelazari.dev/page/</loc>
   </url>
 </urlset>

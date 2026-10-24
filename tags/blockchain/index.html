@@ -2,168 +2,74 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
-<title>Blockchain</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Blockchain · Guilherme Lázari</title>
+
 
   <meta name="author" content="Guilherme de Lázari" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link
-  rel="alternate"
-  type="application/rss+xml"
-  href="https://blog.guilhermelazari.dev/index.xml"
-  title="Guilherme Lázari"
-/>
 
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/fontawesome/css/all.min.css" />
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/css/main.css" />
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/css/syntax.css" />
-
-<link
-  id="dark-mode-theme"
-  rel="stylesheet"
-  href="https://blog.guilhermelazari.dev/css/dark.css"
-/>
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="alternate" type="application/rss+xml" href="https://blog.guilhermelazari.dev/index.xml" title="Guilherme Lázari" />
+<link rel="preload" href="/fonts/roboto-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/css/style.css" />
 
 <script>
-  var darkTheme = document.getElementById('dark-mode-theme')
-  var storedTheme = localStorage.getItem('dark-mode-storage')
-  if (storedTheme === 'dark') {
-    darkTheme.disabled = false
-  } else if (storedTheme === 'light') {
-    darkTheme.disabled = true
-  }
+  try {
+    var theme = localStorage.getItem('theme')
+    if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme
+  } catch (e) {}
 </script>
-
-<script src="https://blog.guilhermelazari.dev/js/theme.js"></script>
-<script src="https://blog.guilhermelazari.dev/js/instantpage.min.js" type="module" defer></script>
+<script src="/js/theme.js" defer></script>
 <meta name="generator" content="Hugo 0.131.0">
+
   </head>
   <body>
-    
-  
-
-
-
-
-  <header>
-    <nav class="navbar">
-  <div class="nav">
-    
-
-    <ul class="nav-links">
+    <header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="/">Guilherme Lázari</a>
+    <nav class="site-nav">
       
         
-          <li>
-            <a href="/" id="Home"
-              ><em class="fas fa-home fa-lg"></em
-            ></a>
-          </li>
+        
           
+        
+        <a href="/">Posts</a>
       
         
-          <li>
-            <a href="/about/" id="About"
-              ><em class="fas fa-user fa-lg"></em
-            ></a>
-          </li>
-          
-      
         
-          <li>
-            <a href="/tags" id="Tags"
-              ><em class="fas fa-tag fa-lg"></em
-            ></a>
-          </li>
           
+        
+        <a href="/tags/" aria-current="page">Tags</a>
       
-    </ul>
+      <button class="theme-toggle" id="theme-toggle" type="button">dark</button>
+    </nav>
   </div>
-</nav>
+</header>
 
-    <div class="intro-header">
-      <div class="container">
-        <div class="tags-heading">
-          
-            <h1>
-              Blockchain
-            </h1>
-          
-          
-        </div>
+    <main class="wrap">
+      
+  <h1 class="prompt"><span>$</span> ls tags/blockchain/</h1>
+  <ul class="post-list">
+  
+    <li>
+      <time datetime="2021-04-21">2021-04-21</time>
+      <div>
+        <a class="post-list-title" href="/2021/04/21/ethereum-virtual-machine/">Ethereum Virtual Machine</a>
+        
+          <p class="post-list-desc">Ethereum calls itself a globally shared virtual machine. What that means, and where the blockchain and the currency fit in.</p>
+        
+        <div class="post-list-meta">7 min read</div>
       </div>
-    </div>
-  </header>
+    </li>
   
-
-    
-  <div class="container" role="main">
-    <div class="posts-list">
-      
-        
-      
-
-      
-        <article class="post-preview">
-  <a href="https://blog.guilhermelazari.dev/2021/04/21/ethereum-virtual-machine/">
-    <h2 class="post-title">Ethereum Virtual Machine</h2>
-  </a>
-  <div class="post-entry">
-    
-      <p>Blockchains and crypto currencies are an exciting topic, and they are trending right now because the price of crypto currencies are shooting up. You&rsquo;ve probably heard of Bitcoin, the largest crypto currency by market cap, and probably also heard of Ethereum, the second largest crypto currency by market. What might come as a surprise for you (it did for me) is that Ethereum dos not sell itself as a crypto-currency.</p>
-      <a href="https://blog.guilhermelazari.dev/2021/04/21/ethereum-virtual-machine/" class="post-read-more"
-        >Read More</a
-      >
-    
-  </div>
-
-  <div class="postmeta">
-    <span class="meta-post">
-  <em class="fa fa-calendar-alt"></em
-  >&nbsp;Apr 21, 2021
-  
-</span>
-
-  </div>
-</article>
-
-      
-    </div>
-    
-  </div>
-
-    <footer>
-  
-  <div>
-    
-      <a href="https://github.com/glazari" name="github"
-        ><em class="fab fa-github"></em
-      ></a>
-    
-      <a href="https://www.linkedin.com/in/guilherme-l%c3%a1zari-costa-e-silva-7a074b59/" name="linkedin"
-        ><em class="fab fa-linkedin"></em
-      ></a>
-    
-  </div>
+</ul>
 
 
-  <div class="container">
-    <p class="credits copyright">
-      <a href="https://blog.guilhermelazari.dev/about">Guilherme de Lázari</a>
-      &nbsp;&copy;
-      2025
-      
-        &nbsp;/&nbsp;
-        <a href="https://blog.guilhermelazari.dev/">Guilherme Lázari</a>
-      
-      &nbsp;&ndash;&nbsp;
-      <em class="fas fa-moon" id="dark-mode-toggle"></em>
-    </p>
-
-    <p class="credits theme-by">
-      Powered By <a href="https://gohugo.io">Hugo</a>&nbsp;
-      Theme
-      <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>
-    </p>
+    </main>
+    <footer class="site-footer">
+  <div class="wrap">
+    &copy; 2026 Guilherme de Lázari · <a href="https://blog.guilhermelazari.dev/index.xml">RSS</a>
   </div>
 </footer>
 

@@ -2,221 +2,117 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Guilherme Lázari</title>
 
+
   <meta name="author" content="Guilherme de Lázari" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link
-  rel="alternate"
-  type="application/rss+xml"
-  href="https://blog.guilhermelazari.dev/index.xml"
-  title="Guilherme Lázari"
-/>
 
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/fontawesome/css/all.min.css" />
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/css/main.css" />
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/css/syntax.css" />
-
-<link
-  id="dark-mode-theme"
-  rel="stylesheet"
-  href="https://blog.guilhermelazari.dev/css/dark.css"
-/>
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="alternate" type="application/rss+xml" href="https://blog.guilhermelazari.dev/index.xml" title="Guilherme Lázari" />
+<link rel="preload" href="/fonts/roboto-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/css/style.css" />
 
 <script>
-  var darkTheme = document.getElementById('dark-mode-theme')
-  var storedTheme = localStorage.getItem('dark-mode-storage')
-  if (storedTheme === 'dark') {
-    darkTheme.disabled = false
-  } else if (storedTheme === 'light') {
-    darkTheme.disabled = true
-  }
+  try {
+    var theme = localStorage.getItem('theme')
+    if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme
+  } catch (e) {}
 </script>
-
-<script src="https://blog.guilhermelazari.dev/js/theme.js"></script>
-<script src="https://blog.guilhermelazari.dev/js/instantpage.min.js" type="module" defer></script>
+<script src="/js/theme.js" defer></script>
 <meta name="generator" content="Hugo 0.131.0">
+
   </head>
   <body>
-    
-  
-    
-  
-  
-
-
-
-  <header>
-    <nav class="navbar">
-  <div class="nav">
-    
-
-    <ul class="nav-links">
+    <header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="/">Guilherme Lázari</a>
+    <nav class="site-nav">
       
         
-          <li>
-            <a href="/" id="Home"
-              ><em class="fas fa-home fa-lg"></em
-            ></a>
-          </li>
+        
           
+        
+        <a href="/" aria-current="page">Posts</a>
       
         
-          <li>
-            <a href="/about/" id="About"
-              ><em class="fas fa-user fa-lg"></em
-            ></a>
-          </li>
-          
-      
         
-          <li>
-            <a href="/tags" id="Tags"
-              ><em class="fas fa-tag fa-lg"></em
-            ></a>
-          </li>
           
+        
+        <a href="/tags/">Tags</a>
       
-    </ul>
+      <button class="theme-toggle" id="theme-toggle" type="button">dark</button>
+    </nav>
   </div>
-</nav>
+</header>
 
-    <div class="intro-header">
-      <div class="container">
-        <div class="page-heading">
-          
-            <h1>
-              Guilherme Lázari
-            </h1>
-          
-          
-        </div>
+    <main class="wrap">
+      
+  <section class="intro">
+    <p class="prompt"><span>$</span> whoami</p>
+    <p>Guilherme. Software developer, interested in operating systems, programming
+languages and how computers work.</p>
+
+    <p class="icons">
+        <a href="https://github.com/glazari" aria-label="GitHub" title="GitHub">
+<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+</a>
+        <a href="https://www.linkedin.com/in/guilherme-l%c3%a1zari-costa-e-silva-7a074b59/" aria-label="LinkedIn" title="LinkedIn">
+<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+</a>
+        <a href="mailto:guilhermelcs@gmail.com" aria-label="Email" title="Email">
+<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M64 112c-8.8 0-16 7.2-16 16v22.1L220.5 291.7c20.7 17 50.4 17 71.1 0L464 150.1V128c0-8.8-7.2-16-16-16H64zM48 212.2V384c0 8.8 7.2 16 16 16H448c8.8 0 16-7.2 16-16V212.2L322 328.8c-38.4 31.5-93.7 31.5-132 0L48 212.2zM0 128C0 92.7 28.7 64 64 64H448c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128z"/></svg>
+</a>
+      <a href="https://blog.guilhermelazari.dev/index.xml" aria-label="RSS" title="RSS">
+<svg class="icon" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M0 64C0 46.3 14.3 32 32 32c229.8 0 416 186.2 416 416c0 17.7-14.3 32-32 32s-32-14.3-32-32C384 253.6 226.4 96 32 96C14.3 96 0 81.7 0 64zM0 416a64 64 0 1 1 128 0A64 64 0 1 1 0 416zM32 160c159.1 0 288 128.9 288 288c0 17.7-14.3 32-32 32s-32-14.3-32-32c0-123.7-100.3-224-224-224c-17.7 0-32-14.3-32-32s14.3-32 32-32z"/></svg>
+</a>
+    </p>
+  </section>
+
+  <p class="prompt"><span>$</span> ls posts/</p>
+  <ul class="post-list">
+  
+    <li>
+      <time datetime="2021-04-21">2021-04-21</time>
+      <div>
+        <a class="post-list-title" href="/2021/04/21/ethereum-virtual-machine/">Ethereum Virtual Machine</a>
+        
+          <p class="post-list-desc">Ethereum calls itself a globally shared virtual machine. What that means, and where the blockchain and the currency fit in.</p>
+        
+        <div class="post-list-meta">7 min read</div>
       </div>
-    </div>
-  </header>
+    </li>
   
-
-    
-  <div class="container" role="main">
-    <div class="posts-list">
-      
+    <li>
+      <time datetime="2021-03-23">2021-03-23</time>
+      <div>
+        <a class="post-list-title" href="/2021/03/23/python-table-tests/">Python Table Tests</a>
         
+          <p class="post-list-desc">Go&#39;s table-test pattern, and how to write it in python with plain dicts.</p>
         
-
-      
-        <article class="post-preview">
-  <a href="https://blog.guilhermelazari.dev/2021/04/21/ethereum-virtual-machine/">
-    <h2 class="post-title">Ethereum Virtual Machine</h2>
-  </a>
-  <div class="post-entry">
-    
-      <p>Blockchains and crypto currencies are an exciting topic, and they are trending right now because the price of crypto currencies are shooting up. You&rsquo;ve probably heard of Bitcoin, the largest crypto currency by market cap, and probably also heard of Ethereum, the second largest crypto currency by market. What might come as a surprise for you (it did for me) is that Ethereum dos not sell itself as a crypto-currency.</p>
-      <a href="https://blog.guilhermelazari.dev/2021/04/21/ethereum-virtual-machine/" class="post-read-more"
-        >Read More</a
-      >
-    
-  </div>
-
-  <div class="postmeta">
-    <span class="meta-post">
-  <em class="fa fa-calendar-alt"></em
-  >&nbsp;Apr 21, 2021
+        <div class="post-list-meta">2 min read</div>
+      </div>
+    </li>
   
-</span>
-
-  </div>
-</article>
-
-      
-        <article class="post-preview">
-  <a href="https://blog.guilhermelazari.dev/2021/03/23/python-table-tests/">
-    <h2 class="post-title">Python Table Tests</h2>
-  </a>
-  <div class="post-entry">
-    
-      <p>In the go programing language there is a testing pattern called table tests. I want to quickly go over what is this pattern, why I think it&rsquo;s great and how we can use it in python.
-What are Table tests In go a simple test would look like this:
-func TestAdd(t *testing.T) { got := add(5, 6) if got != 11 { t.Errorf(&#34;Expected 11, Got %v&#34;, got) } } A table test of the same kind will look like this:</p>
-      <a href="https://blog.guilhermelazari.dev/2021/03/23/python-table-tests/" class="post-read-more"
-        >Read More</a
-      >
-    
-  </div>
-
-  <div class="postmeta">
-    <span class="meta-post">
-  <em class="fa fa-calendar-alt"></em
-  >&nbsp;Mar 23, 2021
+    <li>
+      <time datetime="2020-11-29">2020-11-29</time>
+      <div>
+        <a class="post-list-title" href="/2020/11/29/testing-pyspark/">Testing Pyspark</a>
+        
+          <p class="post-list-desc">How I structure pyspark scripts so they are easy to test, and the caveats to watch out for.</p>
+        
+        <div class="post-list-meta">8 min read</div>
+      </div>
+    </li>
   
-</span>
-
-  </div>
-</article>
-
-      
-        <article class="post-preview">
-  <a href="https://blog.guilhermelazari.dev/2020/11/29/testing-pyspark/">
-    <h2 class="post-title">Testing Pyspark</h2>
-  </a>
-  <div class="post-entry">
-    
-      <p>We all know unit testing our code is a good idea. But there is some kind of inertia that keeps most of us from doing it. Part of this inertia, I believe is not knowing how to start. So I am sharing how I write tests for pyspark in the hopes that it will give you the push you need.
-Testing in python First things first, if you&rsquo;ve never written a test for a normal python function we need to get that out of the way first.</p>
-      <a href="https://blog.guilhermelazari.dev/2020/11/29/testing-pyspark/" class="post-read-more"
-        >Read More</a
-      >
-    
-  </div>
-
-  <div class="postmeta">
-    <span class="meta-post">
-  <em class="fa fa-calendar-alt"></em
-  >&nbsp;Nov 29, 2020
-  
-</span>
-
-  </div>
-</article>
-
-      
-    </div>
-    
-  </div>
-
-    <footer>
-  
-  <div>
-    
-      <a href="https://github.com/glazari" name="github"
-        ><em class="fab fa-github"></em
-      ></a>
-    
-      <a href="https://www.linkedin.com/in/guilherme-l%c3%a1zari-costa-e-silva-7a074b59/" name="linkedin"
-        ><em class="fab fa-linkedin"></em
-      ></a>
-    
-  </div>
+</ul>
 
 
-  <div class="container">
-    <p class="credits copyright">
-      <a href="https://blog.guilhermelazari.dev/about">Guilherme de Lázari</a>
-      &nbsp;&copy;
-      2025
-      
-        &nbsp;/&nbsp;
-        <a href="https://blog.guilhermelazari.dev/">Guilherme Lázari</a>
-      
-      &nbsp;&ndash;&nbsp;
-      <em class="fas fa-moon" id="dark-mode-toggle"></em>
-    </p>
-
-    <p class="credits theme-by">
-      Powered By <a href="https://gohugo.io">Hugo</a>&nbsp;
-      Theme
-      <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>
-    </p>
+    </main>
+    <footer class="site-footer">
+  <div class="wrap">
+    &copy; 2026 Guilherme de Lázari · <a href="https://blog.guilhermelazari.dev/index.xml">RSS</a>
   </div>
 </footer>
 

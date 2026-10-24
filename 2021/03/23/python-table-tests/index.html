@@ -2,143 +2,100 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
-<title>Python Table Tests</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Python Table Tests · Guilherme Lázari</title>
+
+  <meta name="description" content="Go&#39;s table-test pattern, and how to write it in python with plain dicts." />
+
 
   <meta name="author" content="Guilherme de Lázari" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link
-  rel="alternate"
-  type="application/rss+xml"
-  href="https://blog.guilhermelazari.dev/index.xml"
-  title="Guilherme Lázari"
-/>
 
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/fontawesome/css/all.min.css" />
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/css/main.css" />
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/css/syntax.css" />
-
-<link
-  id="dark-mode-theme"
-  rel="stylesheet"
-  href="https://blog.guilhermelazari.dev/css/dark.css"
-/>
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="alternate" type="application/rss+xml" href="https://blog.guilhermelazari.dev/index.xml" title="Guilherme Lázari" />
+<link rel="preload" href="/fonts/roboto-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/css/style.css" />
 
 <script>
-  var darkTheme = document.getElementById('dark-mode-theme')
-  var storedTheme = localStorage.getItem('dark-mode-storage')
-  if (storedTheme === 'dark') {
-    darkTheme.disabled = false
-  } else if (storedTheme === 'light') {
-    darkTheme.disabled = true
-  }
+  try {
+    var theme = localStorage.getItem('theme')
+    if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme
+  } catch (e) {}
 </script>
-
-<script src="https://blog.guilhermelazari.dev/js/theme.js"></script>
-<script src="https://blog.guilhermelazari.dev/js/instantpage.min.js" type="module" defer></script>
+<script src="/js/theme.js" defer></script>
 <meta name="generator" content="Hugo 0.131.0">
+
   </head>
   <body>
-    
-  
-
-
-
-
-  <header>
-    <nav class="navbar">
-  <div class="nav">
-    
-
-    <ul class="nav-links">
+    <header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="/">Guilherme Lázari</a>
+    <nav class="site-nav">
       
         
-          <li>
-            <a href="/" id="Home"
-              ><em class="fas fa-home fa-lg"></em
-            ></a>
-          </li>
+        
           
+        
+        <a href="/" aria-current="page">Posts</a>
       
         
-          <li>
-            <a href="/about/" id="About"
-              ><em class="fas fa-user fa-lg"></em
-            ></a>
-          </li>
-          
-      
         
-          <li>
-            <a href="/tags" id="Tags"
-              ><em class="fas fa-tag fa-lg"></em
-            ></a>
-          </li>
           
+        
+        <a href="/tags/">Tags</a>
       
-    </ul>
+      <button class="theme-toggle" id="theme-toggle" type="button">dark</button>
+    </nav>
   </div>
-</nav>
+</header>
 
-    <div class="intro-header">
-      <div class="container">
-        <div class="post-heading">
-          
-            <h1>
-              Python Table Tests
-            </h1>
-          
-          
-            <span class="meta-post">
-  <em class="fa fa-calendar-alt"></em
-  >&nbsp;Mar 23, 2021
-  
-</span>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-  
-
-    
-  <div class="container" role="main">
-    <article class="article" class="blog-post">
-      <p>In the <a href="https://golang.org/">go programing language</a> there is a testing pattern called
+    <main class="wrap">
+      
+  <article>
+    <header class="post-header">
+      <h1 class="post-title">Python Table Tests</h1>
+      
+        <p class="post-meta">
+          <time datetime="2021-03-23">Mar 23, 2021</time>
+          · 2 min read · <a href="/tags/testing/">#testing</a> <a href="/tags/python/">#python</a>
+        </p>
+      
+    </header>
+    <div class="post-content">
+      <p>In the <a href="https://golang.org/">go programming language</a> there is a testing pattern called
 <a href="https://blog.golang.org/subtests">table tests</a>. I want to quickly go over what is this pattern, why I think
 it&rsquo;s great and how we can use it in python.</p>
-<h1 id="what-are-table-tests">What are Table tests</h1>
+<h2 id="what-are-table-tests">What are Table tests</h2>
 <p>In go a simple test would look like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestAdd</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">got</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">add</span>(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">got</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">11</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;Expected 11, Got %v&#34;</span>, <span style="color:#a6e22e">got</span>)
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestAdd</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nx">got</span> <span class="o">:=</span> <span class="nf">add</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="nx">got</span> <span class="o">!=</span> <span class="mi">11</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;Expected 11, Got %v&#34;</span><span class="p">,</span> <span class="nx">got</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>A table test of the same kind will look like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-go" data-lang="go"><span style="display:flex;"><span><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">TestAdd</span>(<span style="color:#a6e22e">t</span> <span style="color:#f92672">*</span><span style="color:#a6e22e">testing</span>.<span style="color:#a6e22e">T</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">type</span> <span style="color:#a6e22e">test</span> <span style="color:#66d9ef">struct</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">x</span>         <span style="color:#66d9ef">int</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">y</span>         <span style="color:#66d9ef">int</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">expected</span>  <span style="color:#66d9ef">int</span>
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">cases</span> <span style="color:#f92672">:=</span> []<span style="color:#a6e22e">test</span>{
-</span></span><span style="display:flex;"><span>        {<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">11</span>},
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">_</span>, <span style="color:#a6e22e">tc</span> <span style="color:#f92672">:=</span> <span style="color:#66d9ef">range</span> <span style="color:#a6e22e">cases</span> {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">got</span> <span style="color:#f92672">:=</span> <span style="color:#a6e22e">add</span>(<span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">y</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#a6e22e">got</span> <span style="color:#f92672">!=</span> <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">expected</span> {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">Errorf</span>(<span style="color:#e6db74">&#34;add(%v, %v) = %v, Expected %v&#34;</span>, <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">x</span>, <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">y</span>, <span style="color:#a6e22e">got</span>, <span style="color:#a6e22e">tc</span>.<span style="color:#a6e22e">expected</span>)
-</span></span><span style="display:flex;"><span>        }
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>Thats the gist of it.</p>
-<h1 id="why-they-are-great">Why they are great</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="kd">func</span> <span class="nf">TestAdd</span><span class="p">(</span><span class="nx">t</span> <span class="o">*</span><span class="nx">testing</span><span class="p">.</span><span class="nx">T</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">type</span> <span class="nx">test</span> <span class="kd">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">x</span>         <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">y</span>         <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">expected</span>  <span class="kt">int</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nx">cases</span> <span class="o">:=</span> <span class="p">[]</span><span class="nx">test</span><span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="p">{</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nx">_</span><span class="p">,</span> <span class="nx">tc</span> <span class="o">:=</span> <span class="k">range</span> <span class="nx">cases</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="nx">got</span> <span class="o">:=</span> <span class="nf">add</span><span class="p">(</span><span class="nx">tc</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">tc</span><span class="p">.</span><span class="nx">y</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="nx">got</span> <span class="o">!=</span> <span class="nx">tc</span><span class="p">.</span><span class="nx">expected</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="nx">t</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;add(%v, %v) = %v, Expected %v&#34;</span><span class="p">,</span> <span class="nx">tc</span><span class="p">.</span><span class="nx">x</span><span class="p">,</span> <span class="nx">tc</span><span class="p">.</span><span class="nx">y</span><span class="p">,</span> <span class="nx">got</span><span class="p">,</span> <span class="nx">tc</span><span class="p">.</span><span class="nx">expected</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>That&rsquo;s the gist of it.</p>
+<h2 id="why-they-are-great">Why they are great</h2>
 <p>To some people, testing is all about testing the edge cases.</p>
 <blockquote>
 <p>A software QA engineer walks into a bar.</p>
@@ -154,77 +111,36 @@ into flames, killing everyone.</p>
 </blockquote>
 <p>To me the biggest value of a test is not in adding all the edge cases, but in
 testing the base case. Firstly because there can be a bug there ( you&rsquo;d be
-surprised at how often! ), but most importantly because ater the 1st test the
-other test cases are just a ctr-C crt-V away!</p>
+surprised at how often! ), but most importantly because after the 1st test the
+other test cases are just a Ctrl-C Ctrl-V away!</p>
 <p>This, to me is where table tests shine! They separate the testing assertions
 from the test cases definitions. This both makes adding new cases super easy
 and keeps the assertion logic very clean and easy to understand.</p>
-<h1 id="how-to-do-it-in-python">How to do it in python</h1>
+<h2 id="how-to-do-it-in-python">How to do it in python</h2>
 <p>If you haven&rsquo;t guessed it by now, the answer to this is to use a python
 <code>dict</code> instead of the <code>struct</code>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">test_add</span>():
-</span></span><span style="display:flex;"><span>    cases <span style="color:#f92672">=</span> [
-</span></span><span style="display:flex;"><span>       {<span style="color:#e6db74">&#34;x&#34;</span>: <span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;y&#34;</span>: <span style="color:#ae81ff">6</span>, <span style="color:#e6db74">&#34;expected&#34;</span>: <span style="color:#ae81ff">11</span>},
-</span></span><span style="display:flex;"><span>    ]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> tc <span style="color:#f92672">in</span> cases:
-</span></span><span style="display:flex;"><span>        got <span style="color:#f92672">=</span> add(tc[<span style="color:#e6db74">&#34;x&#34;</span>], tc[<span style="color:#e6db74">&#34;y&#34;</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> got <span style="color:#f92672">==</span> tc[<span style="color:#e6db74">&#34;expected&#34;</span>], <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>tc[<span style="color:#e6db74">&#39;x&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> + </span><span style="color:#e6db74">{</span>tc[<span style="color:#e6db74">&#39;y&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">test_add</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="n">cases</span> <span class="o">=</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">       <span class="p">{</span><span class="s2">&#34;x&#34;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s2">&#34;y&#34;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s2">&#34;expected&#34;</span><span class="p">:</span> <span class="mi">11</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">tc</span> <span class="ow">in</span> <span class="n">cases</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">got</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="n">tc</span><span class="p">[</span><span class="s2">&#34;x&#34;</span><span class="p">],</span> <span class="n">tc</span><span class="p">[</span><span class="s2">&#34;y&#34;</span><span class="p">])</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">assert</span> <span class="n">got</span> <span class="o">==</span> <span class="n">tc</span><span class="p">[</span><span class="s2">&#34;expected&#34;</span><span class="p">],</span> <span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">tc</span><span class="p">[</span><span class="s1">&#39;x&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> + </span><span class="si">{</span><span class="n">tc</span><span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&#34;</span>
 </span></span></code></pre></div><p>I&rsquo;ve seen people suggest using <a href="https://docs.python.org/3/library/dataclasses.html">data classes</a> or <a href="https://docs.python.org/3/library/collections.html#collections.namedtuple">named tuples</a>, if that
 makes you happy and write more test, go right ahead. I like the <code>dict</code> approach
 because it doesn&rsquo;t introduce any new concepts so it shouldn&rsquo;t intimidate even
 the very beginners from writing and reading tests.</p>
-<p>Anyway, thats it, nice short post for today.</p>
+<p>Anyway, that&rsquo;s it, nice short post for today.</p>
 
+    </div>
+  </article>
 
-      
-        <div class="blog-tags">
-          
-            <a href="https://blog.guilhermelazari.dev//tags/testing/">testing</a
-            >&nbsp;
-          
-            <a href="https://blog.guilhermelazari.dev//tags/python/">python</a
-            >&nbsp;
-          
-        </div>
-      
-    </article>
-  </div>
-
-    <footer>
-  
-  <div>
-    
-      <a href="https://github.com/glazari" name="github"
-        ><em class="fab fa-github"></em
-      ></a>
-    
-      <a href="https://www.linkedin.com/in/guilherme-l%c3%a1zari-costa-e-silva-7a074b59/" name="linkedin"
-        ><em class="fab fa-linkedin"></em
-      ></a>
-    
-  </div>
-
-
-  <div class="container">
-    <p class="credits copyright">
-      <a href="https://blog.guilhermelazari.dev/about">Guilherme de Lázari</a>
-      &nbsp;&copy;
-      2025
-      
-        &nbsp;/&nbsp;
-        <a href="https://blog.guilhermelazari.dev/">Guilherme Lázari</a>
-      
-      &nbsp;&ndash;&nbsp;
-      <em class="fas fa-moon" id="dark-mode-toggle"></em>
-    </p>
-
-    <p class="credits theme-by">
-      Powered By <a href="https://gohugo.io">Hugo</a>&nbsp;
-      Theme
-      <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>
-    </p>
+    </main>
+    <footer class="site-footer">
+  <div class="wrap">
+    &copy; 2026 Guilherme de Lázari · <a href="https://blog.guilhermelazari.dev/index.xml">RSS</a>
   </div>
 </footer>
 

@@ -1,29 +1,29 @@
-window.onload = function () {
-  var toggle = document.getElementById('dark-mode-toggle')
-  var darkTheme = document.getElementById('dark-mode-theme')
+// Theme toggle. The saved choice is applied by an inline script in <head>
+// before the page paints; this only handles the button.
+document.addEventListener('DOMContentLoaded', function () {
+  var root = document.documentElement
+  var toggle = document.getElementById('theme-toggle')
+  var systemDark = window.matchMedia('(prefers-color-scheme: dark)')
 
-  if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    setTheme(localStorage.getItem('dark-mode-storage') || 'dark')
-  } else {
-    setTheme(localStorage.getItem('dark-mode-storage') || 'light')
+  function isDark() {
+    if (root.dataset.theme) return root.dataset.theme === 'dark'
+    return systemDark.matches
   }
 
-  toggle.addEventListener('click', () => {
-    if (toggle.className === 'fas fa-moon') {
-      setTheme('dark')
-    } else if (toggle.className === 'fas fa-sun') {
-      setTheme('light')
-    }
+  function updateLabel() {
+    toggle.textContent = isDark() ? 'light' : 'dark'
+    toggle.setAttribute('aria-label', isDark() ? 'Switch to light mode' : 'Switch to dark mode')
+  }
+
+  toggle.addEventListener('click', function () {
+    var theme = isDark() ? 'light' : 'dark'
+    root.dataset.theme = theme
+    try {
+      localStorage.setItem('theme', theme)
+    } catch (e) {}
+    updateLabel()
   })
 
-  function setTheme(mode) {
-    localStorage.setItem('dark-mode-storage', mode)
-    if (mode === 'dark') {
-      darkTheme.disabled = false
-      toggle.className = 'fas fa-sun'
-    } else if (mode === 'light') {
-      darkTheme.disabled = true
-      toggle.className = 'fas fa-moon'
-    }
-  }
-}
+  systemDark.addEventListener('change', updateLabel)
+  updateLabel()
+})

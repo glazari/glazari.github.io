@@ -2,226 +2,96 @@
 <html lang="en-us">
   <head>
     <meta charset="utf-8" />
-<title>Posts</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Posts · Guilherme Lázari</title>
+
 
   <meta name="author" content="Guilherme de Lázari" />
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link
-  rel="alternate"
-  type="application/rss+xml"
-  href="https://blog.guilhermelazari.dev/index.xml"
-  title="Guilherme Lázari"
-/>
 
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/fontawesome/css/all.min.css" />
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/css/main.css" />
-<link rel="stylesheet" href="https://blog.guilhermelazari.dev/css/syntax.css" />
-
-<link
-  id="dark-mode-theme"
-  rel="stylesheet"
-  href="https://blog.guilhermelazari.dev/css/dark.css"
-/>
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<link rel="alternate" type="application/rss+xml" href="https://blog.guilhermelazari.dev/index.xml" title="Guilherme Lázari" />
+<link rel="preload" href="/fonts/roboto-mono-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="stylesheet" href="/css/style.css" />
 
 <script>
-  var darkTheme = document.getElementById('dark-mode-theme')
-  var storedTheme = localStorage.getItem('dark-mode-storage')
-  if (storedTheme === 'dark') {
-    darkTheme.disabled = false
-  } else if (storedTheme === 'light') {
-    darkTheme.disabled = true
-  }
+  try {
+    var theme = localStorage.getItem('theme')
+    if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme
+  } catch (e) {}
 </script>
-
-<script src="https://blog.guilhermelazari.dev/js/theme.js"></script>
-<script src="https://blog.guilhermelazari.dev/js/instantpage.min.js" type="module" defer></script>
+<script src="/js/theme.js" defer></script>
 <meta name="generator" content="Hugo 0.131.0">
+
   </head>
   <body>
-    
-  
-
-
-
-
-  <header>
-    <nav class="navbar">
-  <div class="nav">
-    
-
-    <ul class="nav-links">
+    <header class="site-header">
+  <div class="wrap">
+    <a class="site-name" href="/">Guilherme Lázari</a>
+    <nav class="site-nav">
       
         
-          <li>
-            <a href="/" id="Home"
-              ><em class="fas fa-home fa-lg"></em
-            ></a>
-          </li>
+        
           
+        
+        <a href="/" aria-current="page">Posts</a>
       
         
-          <li>
-            <a href="/about/" id="About"
-              ><em class="fas fa-user fa-lg"></em
-            ></a>
-          </li>
-          
-      
         
-          <li>
-            <a href="/tags" id="Tags"
-              ><em class="fas fa-tag fa-lg"></em
-            ></a>
-          </li>
           
+        
+        <a href="/tags/">Tags</a>
       
-    </ul>
+      <button class="theme-toggle" id="theme-toggle" type="button">dark</button>
+    </nav>
   </div>
-</nav>
+</header>
 
-    <div class="intro-header">
-      <div class="container">
-        <div class="post-heading">
-          
-            <h1>
-              Posts
-            </h1>
-          
-          
-            <span class="meta-post">
-  <em class="fa fa-calendar-alt"></em
-  >&nbsp;Nov 1, 2025
+    <main class="wrap">
+      
+  <h1 class="prompt"><span>$</span> ls post/</h1>
+  <ul class="post-list">
   
-</span>
-
-          
-        </div>
+    <li>
+      <time datetime="2021-04-21">2021-04-21</time>
+      <div>
+        <a class="post-list-title" href="/2021/04/21/ethereum-virtual-machine/">Ethereum Virtual Machine</a>
+        
+          <p class="post-list-desc">Ethereum calls itself a globally shared virtual machine. What that means, and where the blockchain and the currency fit in.</p>
+        
+        <div class="post-list-meta">7 min read</div>
       </div>
-    </div>
-  </header>
+    </li>
   
-
-    
-  <div class="container" role="main">
-    <div class="posts-list">
-      
+    <li>
+      <time datetime="2021-03-23">2021-03-23</time>
+      <div>
+        <a class="post-list-title" href="/2021/03/23/python-table-tests/">Python Table Tests</a>
         
-      
-
-      
-        <article class="post-preview">
-  <a href="https://blog.guilhermelazari.dev/2021/04/21/ethereum-virtual-machine/">
-    <h2 class="post-title">Ethereum Virtual Machine</h2>
-  </a>
-  <div class="post-entry">
-    
-      <p>Blockchains and crypto currencies are an exciting topic, and they are trending right now because the price of crypto currencies are shooting up. You&rsquo;ve probably heard of Bitcoin, the largest crypto currency by market cap, and probably also heard of Ethereum, the second largest crypto currency by market. What might come as a surprise for you (it did for me) is that Ethereum dos not sell itself as a crypto-currency.</p>
-      <a href="https://blog.guilhermelazari.dev/2021/04/21/ethereum-virtual-machine/" class="post-read-more"
-        >Read More</a
-      >
-    
-  </div>
-
-  <div class="postmeta">
-    <span class="meta-post">
-  <em class="fa fa-calendar-alt"></em
-  >&nbsp;Apr 21, 2021
+          <p class="post-list-desc">Go&#39;s table-test pattern, and how to write it in python with plain dicts.</p>
+        
+        <div class="post-list-meta">2 min read</div>
+      </div>
+    </li>
   
-</span>
-
-  </div>
-</article>
-
-      
-        <article class="post-preview">
-  <a href="https://blog.guilhermelazari.dev/2021/03/23/python-table-tests/">
-    <h2 class="post-title">Python Table Tests</h2>
-  </a>
-  <div class="post-entry">
-    
-      <p>In the go programing language there is a testing pattern called table tests. I want to quickly go over what is this pattern, why I think it&rsquo;s great and how we can use it in python.
-What are Table tests In go a simple test would look like this:
-func TestAdd(t *testing.T) { got := add(5, 6) if got != 11 { t.Errorf(&#34;Expected 11, Got %v&#34;, got) } } A table test of the same kind will look like this:</p>
-      <a href="https://blog.guilhermelazari.dev/2021/03/23/python-table-tests/" class="post-read-more"
-        >Read More</a
-      >
-    
-  </div>
-
-  <div class="postmeta">
-    <span class="meta-post">
-  <em class="fa fa-calendar-alt"></em
-  >&nbsp;Mar 23, 2021
+    <li>
+      <time datetime="2020-11-29">2020-11-29</time>
+      <div>
+        <a class="post-list-title" href="/2020/11/29/testing-pyspark/">Testing Pyspark</a>
+        
+          <p class="post-list-desc">How I structure pyspark scripts so they are easy to test, and the caveats to watch out for.</p>
+        
+        <div class="post-list-meta">8 min read</div>
+      </div>
+    </li>
   
-</span>
-
-  </div>
-</article>
-
-      
-        <article class="post-preview">
-  <a href="https://blog.guilhermelazari.dev/2020/11/29/testing-pyspark/">
-    <h2 class="post-title">Testing Pyspark</h2>
-  </a>
-  <div class="post-entry">
-    
-      <p>We all know unit testing our code is a good idea. But there is some kind of inertia that keeps most of us from doing it. Part of this inertia, I believe is not knowing how to start. So I am sharing how I write tests for pyspark in the hopes that it will give you the push you need.
-Testing in python First things first, if you&rsquo;ve never written a test for a normal python function we need to get that out of the way first.</p>
-      <a href="https://blog.guilhermelazari.dev/2020/11/29/testing-pyspark/" class="post-read-more"
-        >Read More</a
-      >
-    
-  </div>
-
-  <div class="postmeta">
-    <span class="meta-post">
-  <em class="fa fa-calendar-alt"></em
-  >&nbsp;Nov 29, 2020
-  
-</span>
-
-  </div>
-</article>
-
-      
-    </div>
-    
-  </div>
-
-    <footer>
-  
-  <div>
-    
-      <a href="https://github.com/glazari" name="github"
-        ><em class="fab fa-github"></em
-      ></a>
-    
-      <a href="https://www.linkedin.com/in/guilherme-l%c3%a1zari-costa-e-silva-7a074b59/" name="linkedin"
-        ><em class="fab fa-linkedin"></em
-      ></a>
-    
-  </div>
+</ul>
 
 
-  <div class="container">
-    <p class="credits copyright">
-      <a href="https://blog.guilhermelazari.dev/about">Guilherme de Lázari</a>
-      &nbsp;&copy;
-      2025
-      
-        &nbsp;/&nbsp;
-        <a href="https://blog.guilhermelazari.dev/">Guilherme Lázari</a>
-      
-      &nbsp;&ndash;&nbsp;
-      <em class="fas fa-moon" id="dark-mode-toggle"></em>
-    </p>
-
-    <p class="credits theme-by">
-      Powered By <a href="https://gohugo.io">Hugo</a>&nbsp;
-      Theme
-      <a href="https://github.com/matsuyoshi30/harbor">Harbor</a>
-    </p>
+    </main>
+    <footer class="site-footer">
+  <div class="wrap">
+    &copy; 2026 Guilherme de Lázari · <a href="https://blog.guilhermelazari.dev/index.xml">RSS</a>
   </div>
 </footer>
 
